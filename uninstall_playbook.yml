@@ -1,0 +1,22 @@
+- hosts: servers
+  become: yes
+  tasks:
+    - name: Remove installed executables
+      file:
+        path: /usr/local/bin/gen_calc/{{ item }}
+        state: absent
+      with_items:
+        - sum_calc
+        - sub_calc
+        - gen_calc
+
+    - name: Remove the gen_calc directory if empty
+      file:
+        path: /usr/local/bin/gen_calc
+        state: absent
+
+    - name: Remove source files directory
+      file:
+        path: /usr/local/src/gen_calc
+        state: absent
+

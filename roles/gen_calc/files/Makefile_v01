@@ -1,0 +1,20 @@
+# Makefile to compile sum_calc, sub_calc, and gen_calc
+
+CC = gcc
+CFLAGS = -Wall -Wextra -std=c11
+
+all: sum_calc sub_calc gen_calc
+
+sum_calc: sum_calc.c
+	$(CC) $(CFLAGS) -o sum_calc sum_calc.c
+
+sub_calc: sub_calc.c
+	$(CC) $(CFLAGS) -o sub_calc sub_calc.c
+
+gen_calc: gen_calc.c
+	$(CC) $(CFLAGS) -o gen_calc gen_calc.c
+
+clean:
+	rm -f sum_calc sub_calc gen_calc
+
+.PHONY: all clean

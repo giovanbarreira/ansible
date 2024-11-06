@@ -1,0 +1,21 @@
+---
+- name: Copy source files to the server
+  copy:
+    src: "{{ item }}"
+    dest: /usr/local/src/gen_calc/
+  with_items:
+    - Makefile
+    - sum_calc.c
+    - sub_calc.c
+    - gen_calc.c
+
+- name: Compile and install the applications
+  command: make install
+  args:
+    chdir: /usr/local/src/gen_calc/
+
+- name: Clean up the source files
+  command: make clean
+  args:
+    chdir: /usr/local/src/gen_calc/
+
